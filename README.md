@@ -22,6 +22,7 @@ api.Get["/api/documents/{id}"] = x =>
 $.get('api/documents/1', function (report) {
  // report..
 });
+```
 
 Requirements:
 Newtonsoft Json.NET (4.0.7)

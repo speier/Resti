@@ -4,7 +4,7 @@
 
 Usage example:
 
-```
+```c#
 var api = new RestHandler();
  
 api.Get["/api/reports/{guid}"] = x =>

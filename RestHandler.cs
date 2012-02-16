@@ -4,6 +4,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Helpers;
@@ -81,7 +82,16 @@ namespace Resti {
             }
 
             var arg = new DynamicJsonObject(values);
-            var obj = callback(arg);
+            object obj;
+            try
+            {
+                obj = callback(arg);
+            }
+            catch (Exception ex)
+            {
+                obj = ex.Message;
+                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            }            
 
             var res = JsonConvert.SerializeObject(
                 obj,
